@@ -4,7 +4,7 @@
     <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
     <uses-permission android:name="android.permission.SCHEDULE_EXACT_ALARM" />
     <application
-        android:label="sobriety_app"
+        android:label="SAE"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity
