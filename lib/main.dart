@@ -7,7 +7,7 @@ import 'package:google_fonts/google_fonts.dart';
 
 import 'package:intl/date_symbol_data_local.dart';
 import 'package:timezone/data/latest_all.dart' as tz;
-import 'package:timezone/timezone.dart' as tz;
+
 import 'notification_service.dart';
 import 'settings_page.dart';
 

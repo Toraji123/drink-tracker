@@ -2,7 +2,7 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:flutter_timezone/flutter_timezone.dart';
-import 'package:timezone/data/latest_all.dart' as tz;
+
 import 'package:timezone/timezone.dart' as tz;
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -82,7 +82,7 @@ class NotificationService {
     final prefs = await SharedPreferences.getInstance();
     final timestamp = DateTime.now().toString().substring(0, 19);
     final logMessage = '[$timestamp] $message';
-    print('NotificationService: $message');
+    // print('NotificationService: $message');
     
     List<String> logs = prefs.getStringList('notification_logs') ?? [];
     logs.insert(0, logMessage); // Add to beginning

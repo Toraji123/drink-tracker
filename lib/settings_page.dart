@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:package_info_plus/package_info_plus.dart';
-import 'package:permission_handler/permission_handler.dart';
+
 import 'notification_service.dart';
 
 class SettingsPage extends StatefulWidget {
@@ -69,37 +69,7 @@ class _SettingsPageState extends State<SettingsPage> {
     }
   }
 
-  Future<void> _checkPermissions() async {
-    final notificationStatus = await Permission.notification.status;
-    final scheduleAlarmStatus = await Permission.scheduleExactAlarm.status;
-    
-    if (mounted) {
-      showDialog(
-        context: context,
-        builder: (context) => AlertDialog(
-          title: const Text('権限の状態'),
-          content: Text(
-            '通知権限: ${notificationStatus.isGranted ? "許可" : "拒否"}\n'
-            '正確なアラーム: ${scheduleAlarmStatus.isGranted ? "許可" : "拒否"}',
-          ),
-          actions: [
-            TextButton(
-              onPressed: () => Navigator.pop(context),
-              child: const Text('閉じる'),
-            ),
-            if (!notificationStatus.isGranted || !scheduleAlarmStatus.isGranted)
-              TextButton(
-                onPressed: () {
-                  Navigator.pop(context);
-                  openAppSettings();
-                },
-                child: const Text('設定を開く'),
-              ),
-          ],
-        ),
-      );
-    }
-  }
+
 
   Future<void> _toggleReminder(bool value) async {
     setState(() {
@@ -138,7 +108,7 @@ class _SettingsPageState extends State<SettingsPage> {
                   subtitle: const Text('毎日指定した時間に通知を受け取る'),
                   value: _isReminderEnabled,
                   onChanged: _toggleReminder,
-                  activeColor: Theme.of(context).colorScheme.primary,
+                  activeThumbColor: Theme.of(context).colorScheme.primary,
                 ),
                 ListTile(
                   title: const Text('通知時刻'),
